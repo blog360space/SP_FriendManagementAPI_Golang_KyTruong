@@ -1,0 +1,380 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {},
+        "license": {}
+    },
+    "paths": {
+        "/friends": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Friend"
+                ],
+                "summary": "API to check list friends of an user",
+                "parameters": [
+                    {
+                        "description": "Body",
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Email"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Success"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/models.Failure"
+                        }
+                    }
+                }
+            }
+        },
+        "/friends/add": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Friend"
+                ],
+                "summary": "API to create a friend connection between two users",
+                "parameters": [
+                    {
+                        "description": "Body",
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.FriendCheck"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Success"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/models.Failure"
+                        }
+                    }
+                }
+            }
+        },
+        "/friends/block": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Friend"
+                ],
+                "summary": "API to allow an user can block another user",
+                "parameters": [
+                    {
+                        "description": "Body",
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.UserAction"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Success"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/models.Failure"
+                        }
+                    }
+                }
+            }
+        },
+        "/friends/common-friends": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Friend"
+                ],
+                "summary": "API to check common friends of two users",
+                "parameters": [
+                    {
+                        "description": "Body",
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.FriendCheck"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Success"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/models.Failure"
+                        }
+                    }
+                }
+            }
+        },
+        "/friends/receive-updates": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Friend"
+                ],
+                "summary": "API to return list of users can receive update from an user",
+                "parameters": [
+                    {
+                        "description": "Body",
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.UserPost"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Success"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/models.Failure"
+                        }
+                    }
+                }
+            }
+        },
+        "/friends/subcribe": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Friend"
+                ],
+                "summary": "API to allow an user can subscribe another user",
+                "parameters": [
+                    {
+                        "description": "Body",
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.UserAction"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Success"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/models.Failure"
+                        }
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "API to get all users in app",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "create user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "API to create new user",
+                "parameters": [
+                    {
+                        "description": "Body",
+                        "name": "email",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Email"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Success"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/models.Failure"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "models.Email": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "example": "example@email.com"
+                }
+            }
+        },
+        "models.Failure": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string",
+                    "example": "error message"
+                },
+                "success": {
+                    "type": "boolean",
+                    "example": false
+                }
+            }
+        },
+        "models.FriendCheck": {
+            "type": "object",
+            "properties": {
+                "friends": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "johndoe@gmail.com",
+                        "janedoe@gmail.com"
+                    ]
+                }
+            }
+        },
+        "models.Success": {
+            "type": "object",
+            "properties": {
+                "success": {
+                    "type": "boolean",
+                    "example": true
+                }
+            }
+        },
+        "models.UserAction": {
+            "type": "object",
+            "properties": {
+                "requestor": {
+                    "type": "string",
+                    "example": "johndoe@gmail.com"
+                },
+                "target": {
+                    "type": "string",
+                    "example": "janedoe@gmail.com"
+                }
+            }
+        },
+        "models.UserPost": {
+            "type": "object",
+            "properties": {
+                "sender": {
+                    "type": "string",
+                    "example": "janedoe@gmail.com"
+                },
+                "text": {
+                    "type": "string",
+                    "example": "hello johndoe@gmail.com"
+                }
+            }
+        }
+    }
+}

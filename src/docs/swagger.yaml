@@ -1,0 +1,246 @@
+definitions:
+  models.Email:
+    properties:
+      email:
+        example: example@email.com
+        type: string
+    type: object
+  models.Failure:
+    properties:
+      message:
+        example: error message
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  models.FriendCheck:
+    properties:
+      friends:
+        example:
+        - johndoe@gmail.com
+        - janedoe@gmail.com
+        items:
+          type: string
+        type: array
+    type: object
+  models.Success:
+    properties:
+      success:
+        example: true
+        type: boolean
+    type: object
+  models.UserAction:
+    properties:
+      requestor:
+        example: johndoe@gmail.com
+        type: string
+      target:
+        example: janedoe@gmail.com
+        type: string
+    type: object
+  models.UserPost:
+    properties:
+      sender:
+        example: janedoe@gmail.com
+        type: string
+      text:
+        example: hello johndoe@gmail.com
+        type: string
+    type: object
+info:
+  contact: {}
+  license: {}
+paths:
+  /friends:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Body
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/models.Email'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Success'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.Failure'
+      summary: API to check list friends of an user
+      tags:
+      - Friend
+  /friends/add:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Body
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/models.FriendCheck'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Success'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.Failure'
+      summary: API to create a friend connection between two users
+      tags:
+      - Friend
+  /friends/block:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Body
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/models.UserAction'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Success'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.Failure'
+      summary: API to allow an user can block another user
+      tags:
+      - Friend
+  /friends/common-friends:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Body
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/models.FriendCheck'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Success'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.Failure'
+      summary: API to check common friends of two users
+      tags:
+      - Friend
+  /friends/receive-updates:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Body
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/models.UserPost'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Success'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.Failure'
+      summary: API to return list of users can receive update from an user
+      tags:
+      - Friend
+  /friends/subcribe:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Body
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/models.UserAction'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Success'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.Failure'
+      summary: API to allow an user can subscribe another user
+      tags:
+      - Friend
+  /users:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: string
+            type: array
+      summary: API to get all users in app
+      tags:
+      - User
+    post:
+      consumes:
+      - application/json
+      description: create user
+      parameters:
+      - description: Body
+        in: body
+        name: email
+        required: true
+        schema:
+          $ref: '#/definitions/models.Email'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Success'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.Failure'
+      summary: API to create new user
+      tags:
+      - User
+swagger: "2.0"
