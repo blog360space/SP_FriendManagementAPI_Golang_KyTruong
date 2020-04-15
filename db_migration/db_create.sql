@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS friendmgmt;
-USE friendmgmt;
+CREATE DATABASE IF NOT EXISTS friendMgmt;
+USE friendMgmt;
 
 DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
