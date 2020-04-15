@@ -75,11 +75,11 @@ Once finished these steps, the app is ready to go.
 
 ## API Documentation
 This is API self documentation by using Swagger. You can test all of them by expand specific api then click on try it out button.
-
+![](https://raw.githubusercontent.com/kytd2311/ImagesRepo/master/self_documentation_api.PNG)
 
 ## Test Coverage
 All APIs have been tested carefully by mocking strategy. 
-
+![](https://raw.githubusercontent.com/kytd2311/ImagesRepo/master/test_coverage.png)
 
 ## Achievement
 
