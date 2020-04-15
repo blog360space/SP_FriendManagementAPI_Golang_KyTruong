@@ -1,9 +1,8 @@
-package configs
+package endpoints
 
 import (
 	"database/sql"
 	"friendMgmt/data"
-	"friendMgmt/endpoints"
 	"friendMgmt/services"
 
 	"github.com/gin-gonic/gin"
@@ -11,18 +10,18 @@ import (
 	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
 
-func initUserEndpoint(db *sql.DB) endpoints.UserEndpoint {
+func initUserEndpoint(db *sql.DB) UserEndpoint {
 	var userRepo = data.UserRepository{DB: db}
 	userService := services.UserService{IUserRepository: userRepo}
-	return endpoints.UserEndpoint{IUserService: userService}
+	return UserEndpoint{IUserService: userService}
 }
 
-func initRelationshipEndpoint(db *sql.DB) endpoints.RelationshipEndpoint {
+func initRelationshipEndpoint(db *sql.DB) RelationshipEndpoint {
 	var relationshipRepo = data.RelationshipRepository{DB: db}
 	relationshipService := services.RelationshipService{IRelationshipRepository: relationshipRepo}
 	var userRepo = data.UserRepository{DB: db}
 	userService := services.UserService{IUserRepository: userRepo}
-	return endpoints.RelationshipEndpoint{IRelationshipService: relationshipService, IUserService: userService}
+	return RelationshipEndpoint{IRelationshipService: relationshipService, IUserService: userService}
 }
 
 func ConfigRoutes(db *sql.DB) {

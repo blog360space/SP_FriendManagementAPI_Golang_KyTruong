@@ -1,9 +1,9 @@
 package main
 
 import (
-	"friendMgmt/configs"
 	"friendMgmt/data"
 	"friendMgmt/docs"
+	"friendMgmt/endpoints"
 )
 
 func main() {
@@ -17,5 +17,5 @@ func main() {
 	db, _ := data.InitDB()
 	defer db.Close()
 
-	configs.ConfigRoutes(db)
+	endpoints.ConfigRoutes(db)
 }
