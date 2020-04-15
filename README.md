@@ -76,13 +76,10 @@ Once finished these steps, the app is ready to go.
 ## API Documentation
 This is API self documentation by using Swagger. You can test all of them by expand specific api then click on try it out button.
 
---photo here
-
 
 ## Test Coverage
 All APIs have been tested carefully by mocking strategy. 
 
---photo
 
 ## Achievement
 
